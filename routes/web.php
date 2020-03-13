@@ -24,14 +24,11 @@ Route::get('/cwadmin', function () {
 Route::get('/menu/add-menu-index', 'MenuController@index')->name('add-menu-index');
 Route::post('/menu/add-menu', 'MenuController@addMenu')->name('add-menu');
 Route::get('/menu/manage-menu', 'MenuController@manageMenu')->name('manage-menu-index');
-
-
-
-
-
-
-
-
+Route::get('/menu/unpublished-menu/{id}', 'MenuController@unpublishedMenu')->name('unpublished-menu');
+Route::get('/menu/published-menu/{id}', 'MenuController@publishedMenu')->name('published-menu');
+Route::get('/menu/edit-menu-index/{id}', 'MenuController@editMenuIndex')->name('edit-menu-index');
+Route::post('/menu/update-menu', 'MenuController@updateMenu')->name('update-menu');
+Route::get('/menu/delete-menu/{id}', 'MenuController@deleteMenu')->name('delete-menu');
 
 
 

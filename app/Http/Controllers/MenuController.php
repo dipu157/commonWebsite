@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Menu;
+use App\Models\Menu;
+
 
 class MenuController extends Controller
 {
+    
+
     public function index(){
 
     	return view('Back.menu.menu-index');
@@ -21,6 +24,56 @@ class MenuController extends Controller
 
     public function manageMenu(){
 
-    	return view('Back.menu.manage-menu-index');
+        $menus = Menu::all();
+
+    	return view('Back.menu.manage-menu-index',['menus' => $menus]);
+    }
+
+    public function unpublishedMenu($id){
+
+        $menu = Menu::find($id);
+        $menu->status = 0;
+        $menu->save();
+
+        return redirect()->back()->with('message','Menu Info Unublished Successfully!');
+    }
+
+
+    public function publishedMenu($id){
+
+        $menu = Menu::find($id);
+        $menu->status = 1;
+        $menu->save();
+
+        return redirect()->back()->with('message','Menu Info Published Successfully!');
+    }
+
+    public function editMenuIndex($id){
+
+        $menu = Menu::find($id);
+
+        return view('Back.menu.edit-menu',['menu' => $menu]);
+    }
+
+    public function updateMenu(Request $request){
+
+        $menu = Menu::find($request->id);
+
+        $menu->menu_name = $request->menu_name;
+        $menu->menu_description = $request->menu_description;
+        $menu->menu_type = $request->menu_type;
+        $menu->status = $request->status;
+
+        $menu->save();
+
+        return redirect('/menu/manage-menu')->with('message','Menu Updated Successfully!');
+    }
+
+    public function deleteMenu($id){
+
+        $menu = Menu::find($id);
+        $menu->delete();
+
+        return redirect()->back()->with('message','Menu Deleted Successfully!');
     }
 }

@@ -21,6 +21,7 @@
 <div class="box">
             <div class="box-header">
               <h3 class="box-title">Menu List</h3>
+              <h3 class="text-success text-center">{{ Session::get('message') }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -29,23 +30,28 @@
                 <tr>
                   <th>Sl</th>
                   <th>Name</th>
-                  <th>Description(s)</th>
+                  <th>Description</th>
                   <th>Menu Type</th>
-                  <th>Satus</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                  @php( $i = 1)
+                  @foreach($menus as $menu)
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>X</td>
+                  <td>{{$i++}}</td>
+                  <td>{{ $menu->menu_name }}</td>
+                  <td>{{ $menu->menu_description }}</td>
+                  <td> {{ $menu->menu_type == 1 ? 'Main Menu' : 'Sub Menu' }}</td>
+                  <td>@if( $menu->status == 1 )
+                <a href="{{ route('unpublished-menu', ['id' => $menu->id]) }}" class="btn btn-primary">Published</a>
+                @else
+                <a href="{{ route('published-menu', ['id' => $menu->id]) }}" class="btn btn-warning">Unpublished</a>
+                @endif
+                <a href="{{ route('edit-menu-index', ['id' => $menu->id]) }}" class="btn btn-success">Edit</a>
+                <a href="{{ route('delete-menu', ['id' => $menu->id]) }}" class="btn btn-danger">Delete</a></td>
                 </tr>
+                @endforeach
                 </tbody>
               </table>
             </div>

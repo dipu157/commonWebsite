@@ -19,6 +19,8 @@ class CreateMenusTable extends Migration
             $table->text('menu_description');
             $table->tinyInteger('menu_type');
             $table->tinyInteger('status');
+            $table->tinyInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

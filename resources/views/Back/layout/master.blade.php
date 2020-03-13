@@ -254,13 +254,13 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="{{ asset('/') }}backend/#">View all tasks</a>
+                <a href="#">View all tasks</a>
               </li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="{{ asset('/') }}backend/#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
@@ -323,12 +323,25 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="{{ asset('/') }}backend/#">
+          <a href="{{ route('home') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+
         <li class="treeview">
-          <a href="#">
+          <a href="">
+            <i class="fa fa-edit"></i> <span>Configuration</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('add-menu-index') }}"><i class="fa fa-circle-o"></i> Configure FrontEnd</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="{{ route('add-menu-index') }}">
             <i class="fa fa-edit"></i> <span>Menus</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -339,7 +352,33 @@
             <li><a href="{{ route('manage-menu-index') }}"><i class="fa fa-circle-o"></i> Manage Menu</a></li>
           </ul>
         </li>
+
         <li class="treeview">
+          <a href="">
+            <i class="fa fa-edit"></i> <span>Slider</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('add-menu-index') }}"><i class="fa fa-circle-o"></i> Slider Config</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-edit"></i> <span>Page Content</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('add-menu-index') }}"><i class="fa fa-circle-o"></i> Page Setup</a></li>
+          </ul>
+        </li>
+
+
+        <!-- <li class="treeview">
           <a href="{{ asset('/') }}backend/#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -402,7 +441,7 @@
             </li>
             <li><a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
