@@ -21,17 +21,31 @@ Route::get('/cwadmin', function () {
     return view('Back.login');
 });
 
-Route::get('/menu/add-menu-index', 'MenuController@index')->name('add-menu-index');
-Route::post('/menu/add-menu', 'MenuController@addMenu')->name('add-menu');
-Route::get('/menu/manage-menu', 'MenuController@manageMenu')->name('manage-menu-index');
-Route::get('/menu/unpublished-menu/{id}', 'MenuController@unpublishedMenu')->name('unpublished-menu');
-Route::get('/menu/published-menu/{id}', 'MenuController@publishedMenu')->name('published-menu');
-Route::get('/menu/edit-menu-index/{id}', 'MenuController@editMenuIndex')->name('edit-menu-index');
-Route::post('/menu/update-menu', 'MenuController@updateMenu')->name('update-menu');
-Route::get('/menu/delete-menu/{id}', 'MenuController@deleteMenu')->name('delete-menu');
+/*=========== Menu ================*/ 
 
+Route::get('/menu/add-menu-index', 'BackControl\MenuController@index')->name('add-menu-index');
+Route::post('/menu/add-menu', 'BackControl\MenuController@addMenu')->name('add-menu');
+Route::get('/menu/manage-menu', 'BackControl\MenuController@manageMenu')->name('manage-menu-index');
+Route::get('/menu/unpublished-menu/{id}', 'BackControl\MenuController@unpublishedMenu')->name('unpublished-menu');
+Route::get('/menu/published-menu/{id}', 'BackControl\MenuController@publishedMenu')->name('published-menu');
+Route::get('/menu/edit-menu-index/{id}', 'BackControl\MenuController@editMenuIndex')->name('edit-menu-index');
+Route::post('/menu/update-menu', 'BackControl\MenuController@updateMenu')->name('update-menu');
+Route::get('/menu/delete-menu/{id}', 'BackControl\MenuController@deleteMenu')->name('delete-menu');
+
+/*=========== Configuration  ================*/ 
+
+Route::get('/configuration/configuration-index', 'BackControl\ConfigureController@index')->name('configure-index');
+Route::post('/configuration/save-configuration', 'BackControl\ConfigureController@saveConfiguration')->name('save-configure');
+
+/*=========== Slider  ================*/ 
+
+Route::get('/slider/slider-index', 'BackControl\SliderController@index')->name('slider-index');
+
+/*=========== Page Body  ================*/ 
+
+Route::get('/pagebody/pagebody-index', 'BackControl\PageBodyController@index')->name('pagebody-index');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('BackHome');

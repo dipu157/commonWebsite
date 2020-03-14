@@ -46,7 +46,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="{{ asset('/') }}backend/index2.html" class="logo">
+    <a href="{{ route('BackHome') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -323,20 +323,20 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="{{ route('home') }}">
+          <a href="{{ route('BackHome') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
 
         <li class="treeview">
-          <a href="">
+          <a href="{{ route('configure-index') }}">
             <i class="fa fa-edit"></i> <span>Configuration</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('add-menu-index') }}"><i class="fa fa-circle-o"></i> Configure FrontEnd</a></li>
+            <li><a href="{{ route('configure-index') }}"><i class="fa fa-circle-o"></i> Configure FrontEnd</a></li>
           </ul>
         </li>
 
@@ -354,94 +354,28 @@
         </li>
 
         <li class="treeview">
-          <a href="">
+          <a href="{{ route('slider-index') }}">
             <i class="fa fa-edit"></i> <span>Slider</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('add-menu-index') }}"><i class="fa fa-circle-o"></i> Slider Config</a></li>
+            <li><a href="{{ route('slider-index') }}"><i class="fa fa-circle-o"></i> Slider Config</a></li>
           </ul>
         </li>
 
         <li class="treeview">
-          <a href="">
+          <a href="{{ route('pagebody-index') }}">
             <i class="fa fa-edit"></i> <span>Page Content</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('add-menu-index') }}"><i class="fa fa-circle-o"></i> Page Setup</a></li>
+            <li><a href="{{ route('pagebody-index') }}"><i class="fa fa-circle-o"></i> Page Setup</a></li>
           </ul>
         </li>
-
-
-        <!-- <li class="treeview">
-          <a href="{{ asset('/') }}backend/#">
-            <i class="fa fa-table"></i> <span>Tables</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ asset('/') }}backend/pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="{{ asset('/') }}backend/#">
-            <i class="fa fa-folder"></i> <span>Examples</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ asset('/') }}backend/pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a href="{{ asset('/') }}backend/pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="{{ asset('/') }}backend/#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="{{ asset('/') }}backend/#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
