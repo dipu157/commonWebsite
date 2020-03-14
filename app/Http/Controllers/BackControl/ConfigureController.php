@@ -12,7 +12,9 @@ class ConfigureController extends Controller
 {
     public function index(){
 
-    	return view('Back.configuration.configuration-index');
+        $setings = Seting::all();
+
+    	return view('Back.configuration.configuration-index',['setings' => $setings]);
     }
 
     public function saveConfiguration(Request $request){
@@ -43,5 +45,18 @@ class ConfigureController extends Controller
 
         return redirect('/configuration/configuration-index')->with('msg','Configuration Add Successfully');
 
+    }
+
+    public function editConfiguration($id){
+
+        return 'x';
+    }
+
+    public function deleteConfiguration($id){
+
+        $seting = Seting::find($id);
+        $seting->delete();
+
+        return redirect()->back()->with('msg','Configuration Deleted Successfully!');
     }
 }

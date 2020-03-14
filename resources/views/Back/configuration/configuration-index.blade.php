@@ -34,7 +34,7 @@
 
 <section class="content">
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 
 <div class="box">
             <div class="box-header">
@@ -55,16 +55,16 @@
                 </thead>
                 <tbody>
                   @php( $i = 1)
+                  @foreach($setings as $seting)
                 <tr>
                   <td>{{$i++}}</td>
-                  <td>demo</td>
-                  <td>demo</td>
-                  <td>demo</td>
-                  <td>
-                <a href="" class="btn btn-primary">Published</a>
-                <a href="" class="btn btn-success">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a></td>
+                  <td>{{ $seting->title }}</td>
+                  <td><img src="{{ asset($seting->nav_image) }}" height="100px" width="100px" /> </td>
+                  <td><img src="{{ asset($seting->logo_image) }}" height="80px" width="80px" />  </td>
+                  <td><a href="{{ route('edit-configuration', ['id' => $seting->id]) }}" class="btn btn-success">Edit</a>
+                  <a href="{{ route('delete-configuration', ['id' => $seting->id]) }}" class="btn btn-danger">Delete</a></td>
                 </tr>
+                @endforeach
                 </tbody>
               </table>
             </div>
@@ -76,6 +76,7 @@
   </div>
 
   @include('Back.configuration.modal.add-configuration')
+  @include('Back.configuration.modal.edit-configuration')
 
 
 

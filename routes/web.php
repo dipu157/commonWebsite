@@ -24,18 +24,33 @@ Route::get('/cwadmin', function () {
 /*=========== Menu ================*/ 
 
 Route::get('/menu/add-menu-index', 'BackControl\MenuController@index')->name('add-menu-index');
+
 Route::post('/menu/add-menu', 'BackControl\MenuController@addMenu')->name('add-menu');
+
 Route::get('/menu/manage-menu', 'BackControl\MenuController@manageMenu')->name('manage-menu-index');
+
 Route::get('/menu/unpublished-menu/{id}', 'BackControl\MenuController@unpublishedMenu')->name('unpublished-menu');
+
 Route::get('/menu/published-menu/{id}', 'BackControl\MenuController@publishedMenu')->name('published-menu');
+
 Route::get('/menu/edit-menu-index/{id}', 'BackControl\MenuController@editMenuIndex')->name('edit-menu-index');
+
 Route::post('/menu/update-menu', 'BackControl\MenuController@updateMenu')->name('update-menu');
+
 Route::get('/menu/delete-menu/{id}', 'BackControl\MenuController@deleteMenu')->name('delete-menu');
 
 /*=========== Configuration  ================*/ 
 
 Route::get('/configuration/configuration-index', 'BackControl\ConfigureController@index')->name('configure-index');
+
 Route::post('/configuration/save-configuration', 'BackControl\ConfigureController@saveConfiguration')->name('save-configure');
+
+Route::get('/configuration/edit-configuration/{id}', 'BackControl\ConfigureController@editConfiguration')->name('edit-configuration');
+
+// Route::post('/configuration/update-configuration', 'BackControl\ConfigureController@updateConfiguration')->name('update-configuration');
+
+Route::get('/configuration/delete-configuration/{id}', 'BackControl\ConfigureController@deleteConfiguration')->name('delete-configuration');
+
 
 /*=========== Slider  ================*/ 
 
