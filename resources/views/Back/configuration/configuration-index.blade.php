@@ -61,7 +61,7 @@
                   <td>{{ $seting->title }}</td>
                   <td><img src="{{ asset($seting->nav_image) }}" height="100px" width="100px" /> </td>
                   <td><img src="{{ asset($seting->logo_image) }}" height="80px" width="80px" />  </td>
-                  <td><a href="{{ route('edit-configuration', ['id' => $seting->id]) }}" class="btn btn-success">Edit</a>
+                  <td><a href="{{ route('edit-configuration', ['id' => $seting->id]) }}" data-target="#modal-edit{{ $seting->id }}" data-toggle="modal" class="btn btn-success">Edit</a>
                   <a href="{{ route('delete-configuration', ['id' => $seting->id]) }}" class="btn btn-danger">Delete</a></td>
                 </tr>
                 @endforeach

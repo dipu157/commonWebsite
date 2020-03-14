@@ -47,7 +47,7 @@ Route::post('/configuration/save-configuration', 'BackControl\ConfigureControlle
 
 Route::get('/configuration/edit-configuration/{id}', 'BackControl\ConfigureController@editConfiguration')->name('edit-configuration');
 
-// Route::post('/configuration/update-configuration', 'BackControl\ConfigureController@updateConfiguration')->name('update-configuration');
+Route::post('/configuration/update-configuration', 'BackControl\ConfigureController@updateConfiguration')->name('update-configuration');
 
 Route::get('/configuration/delete-configuration/{id}', 'BackControl\ConfigureController@deleteConfiguration')->name('delete-configuration');
 
@@ -55,6 +55,18 @@ Route::get('/configuration/delete-configuration/{id}', 'BackControl\ConfigureCon
 /*=========== Slider  ================*/ 
 
 Route::get('/slider/slider-index', 'BackControl\SliderController@index')->name('slider-index');
+
+Route::post('/slider/save-slider', 'BackControl\SliderController@saveSlider')->name('save-slider');
+
+Route::get('/slider/unpublished-slider/{id}', 'BackControl\SliderController@unpublishedSlider')->name('unpublished-slider');
+
+Route::get('/slider/published-slider/{id}', 'BackControl\SliderController@publishedSlider')->name('published-slider');
+
+Route::get('/slider/edit-slider/{id}', 'BackControl\SliderController@editSlider')->name('edit-slider');
+
+Route::post('/slider/update-slider', 'BackControl\SliderController@updateSlider')->name('update-slider');
+
+Route::get('/slider/delete-slider/{id}', 'BackControl\SliderController@deleteSlider')->name('delete-slider');
 
 /*=========== Page Body  ================*/ 
 

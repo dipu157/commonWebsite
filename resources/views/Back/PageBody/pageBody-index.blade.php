@@ -1,12 +1,32 @@
 @extends('Back.layout.master')
 @section('body-content')
 
+<style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Page Setup
-      </h1>
+      <section class="content-header">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+      <i class="fa fa-plus"></i>Page Body Setup
+      </button>
+
+
+
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
@@ -39,6 +59,7 @@
                 </thead>
                 <tbody>
                   @php( $i = 1)
+                  @foreach($pagebodies as $pagebody)
                 <tr>
                   <td>{{$i++}}</td>
                   <td>demo</td>
@@ -51,6 +72,7 @@
                 <a href="" class="btn btn-success">Edit</a>
                 <a href="" class="btn btn-danger">Delete</a></td>
                 </tr>
+                @endforeach
                 </tbody>
               </table>
             </div>
@@ -61,6 +83,9 @@
     </section>
   </div>
 
+
+  @include('Back.PageBody.modal.add-pageBody')
+  @include('Back.PageBody.modal.edit-pageBody')
 
 
 @endsection

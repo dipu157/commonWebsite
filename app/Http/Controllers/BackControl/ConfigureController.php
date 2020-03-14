@@ -47,9 +47,9 @@ class ConfigureController extends Controller
 
     }
 
-    public function editConfiguration($id){
+    public function updateConfiguration(Request $request){
 
-        return 'x';
+        return $request->all();
     }
 
     public function deleteConfiguration($id){
