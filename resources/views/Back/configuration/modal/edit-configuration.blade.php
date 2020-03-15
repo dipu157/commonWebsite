@@ -1,3 +1,5 @@
+
+@if(isset($seting->id))
 <div class="modal fade" id="modal-edit{{ $seting->id }}">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -12,18 +14,20 @@
               <div class="box-body">
                 <div class="form-group">
 
+                  <input type="hidden" name="id" value="{{ $seting->id }}">
+
                   <label for="exampleInputEmail1">Title</label>
-                  <input type="text" class="form-control" name="title" value="{{ $seting->title }}">
+                  <input type="text" class="form-control" name="title" value="{{ $seting->title }}"> <br>
 
                   <div class="form-group">
                     <label>Logo Image</label>
-                    <input type="file" name="logo_image" class="form-control" />
+                    <input type="file" name="logo_image" class="form-control" value="{{ $seting->logo_image }}" required />
                     <img src="{{ asset($seting->logo_image) }}" height="100px" width="100px" />
                   </div>
 
                   <div class="form-group">
                     <label>Nav Image</label>
-                    <input type="file" name="nav_image" class="form-control" />
+                    <input type="file" name="nav_image" class="form-control" required />
                     <img src="{{ asset($seting->nav_image) }}" height="100px" width="100px" />
                   </div>
 
@@ -41,3 +45,6 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
+
+
+@endif

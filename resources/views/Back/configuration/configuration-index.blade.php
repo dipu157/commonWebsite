@@ -20,7 +20,8 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+
+    <button type="button" id="btn_config" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
       <i class="fa fa-plus"></i>New Configuration Setup
       </button>
 
@@ -77,6 +78,17 @@
 
   @include('Back.configuration.modal.add-configuration')
   @include('Back.configuration.modal.edit-configuration')
+
+  <script>
+    $(document).ready(function() {
+     #btn_config.prop('disabled', true);
+     #btn_config.keyup(function() {
+        if($setings == null) {
+           #btn_config.prop('disabled', false);
+        }
+     });
+ });
+  </script>
 
 
 

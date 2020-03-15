@@ -16,7 +16,7 @@ class FrontController extends Controller
     	$setings = Seting::all();
     	$sliders = Slider::all();
     	$pagebodies = PageBody::all();
-    	$menus = Menu::all();
+    	$menus = Menu::where('status',1)->get();
 
     	return view('Front.layout.home',[
     		'setings' => $setings,

@@ -49,7 +49,31 @@ class ConfigureController extends Controller
 
     public function updateConfiguration(Request $request){
 
-        return $request->all();
+        $logoImage = $request->file('logo_image');
+        $imageName = $logoImage->getClientOriginalName();
+        $directory = './logo-images/';
+        $logoimageURL = $directory.$imageName;
+        $logoImage->move($directory,$imageName);
+
+        $navImage = $request->file('nav_image');
+        $nimageName = $navImage->getClientOriginalName();
+        $directory = './nav-images/';
+        $navimageURL = $directory.$nimageName;
+        $navImage->move($directory,$nimageName);
+
+        //return $imageURL;
+        
+
+        $seting = Seting::find($request->id);
+
+        $seting->title = $request->title;
+        $seting->logo_image = $logoimageURL;
+        $seting->nav_image = $navimageURL;
+        $seting->user_id = Auth::id();
+
+        $seting->save();
+
+        return redirect('/configuration/configuration-index')->with('msg','Configuration Updated Successfully');
     }
 
     public function deleteConfiguration($id){

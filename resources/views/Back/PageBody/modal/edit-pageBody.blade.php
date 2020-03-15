@@ -1,3 +1,6 @@
+
+@if(isset($pagebody->id))
+
 <div class="modal fade" id="modal-editpage{{ $pagebody->id }}">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -55,3 +58,5 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
+
+@endif
