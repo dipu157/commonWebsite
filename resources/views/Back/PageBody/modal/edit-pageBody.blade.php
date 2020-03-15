@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-edit">
+<div class="modal fade" id="modal-editpage{{ $pagebody->id }}">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -7,24 +7,38 @@
                 <h4 class="modal-title">Edit PageBody</h4>
               </div>
 
-              <form method="post" action="" enctype="multipart/form-data">
+              <form method="post" action="{{ route('update-pagebody') }}" enctype="multipart/form-data">
               @csrf
               <div class="box-body">
                 <div class="form-group">
 
-                  <label for="exampleInputEmail1">Title</label>
-                  <input type="text" class="form-control" name="title" value="">
+                  <label>Menu Name</label>
+                  
+                  <select name="menu_id" class="form-control" required>
+                    @foreach($menus as $menu)
+                    <option value="{{ $menu->id }}">{{ $menu->menu_name }}</option>
+                    @endforeach
+                  </select> <br>
 
                   <div class="form-group">
-                    <label>Logo Image</label>
-                    <input type="file" name="logo_image" class="form-control" />
-                    <img src="" height="100px" width="100px" />
+                    <label>Head Line</label>
+                    <input type="text" name="headline" class="form-control" value="{{ $pagebody->headline }}" />
                   </div>
 
                   <div class="form-group">
-                    <label>Nav Image</label>
-                    <input type="file" name="nav_image" class="form-control" />
-                    <img src="" height="100px" width="100px" />
+                    <label>Detail Description</label>
+                    <textarea name="detail_description" class="form-control"> {{ $pagebody->detail_description }}"</textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Related Image</label>
+                    <input type="file" name="related_image" class="form-control" />
+                    <img src="{{ asset($pagebody->related_image) }}" height="80px" width="100px" />
+                  </div>
+
+                  <div class="form-group">
+                    <input type="radio" name="status" {{ $pagebody->status == 1 ? 'checked' : '' }} checked value="1" /> Published
+                    <input type="radio" name="status" {{ $pagebody->status == 0 ? 'checked' : '' }} value="0" /> UnPublished
                   </div>
 
                 </div>

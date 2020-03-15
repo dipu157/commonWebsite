@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Front.layout.home');
-});
+// Route::get('/', function () {
+//     return view('Front.layout.home');
+// });
+
+Route::get('/', 'FrontController@index');
 
 /*============Admin Part =================*/
 
@@ -71,6 +73,18 @@ Route::get('/slider/delete-slider/{id}', 'BackControl\SliderController@deleteSli
 /*=========== Page Body  ================*/ 
 
 Route::get('/pagebody/pagebody-index', 'BackControl\PageBodyController@index')->name('pagebody-index');
+
+Route::post('/pagebody/save-pagebody', 'BackControl\PageBodyController@savePageBody')->name('save-pagebody');
+
+Route::get('/pagebody/unpublished-pagebody/{id}', 'BackControl\PageBodyController@unpublishedPageBody')->name('unpublished-pagebody');
+
+Route::get('/pagebody/published-pagebody/{id}', 'BackControl\PageBodyController@publishedPageBody')->name('published-pagebody');
+
+Route::get('/pagebody/edit-pagebody/{id}', 'BackControl\PageBodyController@editPageBody')->name('edit-pagebody');
+
+Route::post('/pagebody/update-pagebody', 'BackControl\PageBodyController@updatePageBody')->name('update-pagebody');
+
+Route::get('/pagebody/delete-pagebody/{id}', 'BackControl\PageBodyController@deletePageBody')->name('delete-pagebody');
 
 
 Auth::routes();

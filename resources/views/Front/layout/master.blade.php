@@ -50,21 +50,9 @@
                     <label for="drop" class="toggle">Menu</label>
                     <input type="checkbox" id="drop" />
                     <ul class="menu ml-auto">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li>
-                            <!-- First Tier Drop Down -->
-                            <label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                            <a href="#">More Info <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                            <input type="checkbox" id="drop-2" />
-                            <ul class="inner-ul">
-                                <li><a href="#gallery">Gallery</a></li>
-                                <li><a href="#stats">Stats</a></li>
-                                <li><a href="#posts">Blog</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        @foreach($menus as $menu)
+                        <li><a href="index.html">{{$menu->menu_name}}</a></li>
+                        @endforeach
                     </ul>
 
                 </nav>

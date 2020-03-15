@@ -11,6 +11,8 @@ class PageBody extends Model
 
     protected $guarded = ['id', 'created_at','updated_at'];
 
-    protected $fillable = [      
-    ];
+    public function menu(){
+
+    	return $this->belongsTo('App\Models\Menu');
+    }
 }
