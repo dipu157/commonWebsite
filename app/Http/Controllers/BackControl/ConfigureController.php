@@ -7,6 +7,7 @@ use App\Http\Traits\CommonTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Seting;
+use DataTables;
 
 class ConfigureController extends Controller
 {
@@ -65,6 +66,17 @@ class ConfigureController extends Controller
         
 
         $seting = Seting::find($request->id);
+
+        //code for remove old file
+        if($seting->logo_image != ''  && $seting->logo_image != null){
+            $logo_image_old = $seting->logo_image;
+            unlink($logo_image_old);
+        }
+
+        if($seting->nav_image != ''  && $seting->nav_image != null){
+            $nav_image_old = $seting->nav_image;
+            unlink($nav_image_old);
+        }
 
         $seting->title = $request->title;
         $seting->logo_image = $logoimageURL;

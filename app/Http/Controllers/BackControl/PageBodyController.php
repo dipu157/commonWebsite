@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PageBody;
 use App\Models\Menu;
+use DataTables;
 
 class PageBodyController extends Controller
 {
@@ -66,7 +67,33 @@ class PageBodyController extends Controller
 
     public function updatePageBody(Request $request){
 
-        return $request->all();
+        $pagebodyImage = $request->file('related_image');
+        $imageName = $pagebodyImage->getClientOriginalName();
+        $directory = './pagebody-images/';
+        $pagebodyImageURL = $directory.$imageName;
+        $pagebodyImage->move($directory,$imageName);
+
+        //return $imageURL;
+        
+
+        $pagebody = PageBody::find($request->id);
+
+        //code for remove old file
+        if($pagebody->related_image != ''  && $pagebody->related_image != null){
+            $pagebody_image_old = $pagebody->related_image;
+            unlink($pagebody_image_old);
+        }
+
+        $pagebody->menu_id = $request->menu_id;
+        $pagebody->headline = $request->headline;
+        $pagebody->detail_description = $request->detail_description;
+        $pagebody->related_image = $pagebodyImageURL;
+        $pagebody->status = $request->status;
+        $pagebody->user_id = Auth::id();
+
+        $pagebody->save();
+
+        return redirect('/pagebody/pagebody-index')->with('msg','pagebody Updated Successfully');
     }
 
     public function deletePageBody($id){

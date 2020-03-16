@@ -11,6 +11,11 @@ class Slider extends Model
 
     protected $guarded = ['id', 'created_at','updated_at'];
 
-    protected $fillable = [     
+    protected $fillable = [   
+
+    	'slider_text',
+    	'slider_image',
+    	'status',
+
     ];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BackControl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
+use DataTables;
 
 class SliderController extends Controller
 {
@@ -59,7 +60,30 @@ class SliderController extends Controller
 
     public function updateSlider(Request $request){
 
-    	return $request->all();
+        $sliderImage = $request->file('slider_image');
+        $imageName = $sliderImage->getClientOriginalName();
+        $directory = './slider-images/';
+        $sliderImageURL = $directory.$imageName;
+        $sliderImage->move($directory,$imageName);
+
+        //return $imageURL;
+        
+
+        $slider = Slider::find($request->id);
+
+        //code for remove old file
+        if($slider->slider_image != ''  && $slider->slider_image != null){
+            $slider_image_old = $slider->slider_image;
+            unlink($slider_image_old);
+        }
+
+        $slider->slider_text = $request->slider_text;
+        $slider->slider_image = $sliderImageURL;
+        $slider->status = $request->status;;
+
+        $slider->save();
+
+        return redirect('/slider/slider-index')->with('msg','slider Updated Successfully');
     }
 
     public function deleteSlider($id){

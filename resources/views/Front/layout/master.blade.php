@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-    <title>common Website Template</title>
+    <title>{{ $seting->title }}</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
@@ -42,9 +42,9 @@
                 <!-- nav -->
                 <nav class="py-2 d-lg-flex">
                     <div id="logo">
-                        <h1><a class="navbar-brand logo" href="index.html">
-                                 Conveyance
-                            </a></h1>
+                        <a class="navbar-brand logo" href="index.html">
+                            <img src="{{ asset($seting->logo_image) }}" alt="logo_image" height="80px" width="160px" />
+                            </a>
                     </div>
 
                     <label for="drop" class="toggle">Menu</label>

@@ -13,13 +13,13 @@ class FrontController extends Controller
 {
     public function index(){
 
-    	$setings = Seting::all();
+    	$seting = Seting::first();
     	$sliders = Slider::all();
     	$pagebodies = PageBody::all();
     	$menus = Menu::where('status',1)->get();
 
     	return view('Front.layout.home',[
-    		'setings' => $setings,
+    		'seting' => $seting,
     		'sliders' => $sliders,
     		'menus' => $menus,
     		'pagebodies' => $pagebodies

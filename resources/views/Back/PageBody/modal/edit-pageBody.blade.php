@@ -15,9 +15,11 @@
               <div class="box-body">
                 <div class="form-group">
 
+                  <input type="hidden" name="id" value="{{ $pagebody->id }}">
+
                   <label>Menu Name</label>
-                  
                   <select name="menu_id" class="form-control" required>
+                    <option selected>-- Select Menu Name--</option>
                     @foreach($menus as $menu)
                     <option value="{{ $menu->id }}">{{ $menu->menu_name }}</option>
                     @endforeach
